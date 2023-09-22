@@ -13,7 +13,7 @@ class NetworkManager {
 
     private init() {}
   
-    func getArt(completed: @escaping (Result<[Art], ErrorMessage>) -> Void) {
+    func getArt(completed: @escaping (Result<[Department], ErrorMessage>) -> Void) {
         
         let endpoint = baseURL + "departments"
         //do I want to limit it to 80 somehow?
@@ -31,16 +31,30 @@ class NetworkManager {
                 completed(.failure(.invalidData))
                 return
             }
-
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-
+            
             do {
-                let artResponse = try decoder.decode(ArtResponse.self, from: data)
-                completed(.success(artResponse.data))
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let artResponse = try decoder.decode([Department].self, from: data)
+                completed(.success(artResponse))
             } catch {
                 completed(.failure(.invalidData))
             }
+            
+//            guard let data = data else {
+//                completed(.failure(.invalidData))
+//                return
+//            }
+//
+//            let decoder = JSONDecoder()
+//            decoder.keyDecodingStrategy = .convertFromSnakeCase
+//
+//            do {
+//                let artResponse = try decoder.decode(Department.self, from: data)
+//                completed(.success(artResponse.self))
+//            } catch {
+//                completed(.failure(.invalidData))
+//            }
         }
 
         task.resume()

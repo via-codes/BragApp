@@ -15,7 +15,7 @@ struct Art: Codable {
 //    var objectID: Int
 //    var primaryImage: String?
 //    var constituents: [Constituent]
-    var department: [Department]
+    var departments: [Department]
 //    var title: String
 //    var objectEndDate: Int
 }

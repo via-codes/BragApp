@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var titleStackView: UIStackView!
-    var art = [Art]()
+    var art = [Department]()
     let logoImageView = UIImageView()
     let viewCollectionButton = CustomUIButton(backgroundColor: .systemGray2, title: "View Collection")
     
