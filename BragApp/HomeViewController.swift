@@ -10,7 +10,6 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var titleStackView: UIStackView!
-    var art = [Department]()
     let logoImageView = UIImageView()
     let viewCollectionButton = CustomUIButton(backgroundColor: .systemGray2, title: "View Collection")
     
@@ -26,25 +25,28 @@ class HomeViewController: UIViewController {
     
     @objc func buttonAction(_ sender:UIButton!) {
         print("Button tapped")
-        getArt()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let collectionViewController = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as! CollectionViewController
         navigationController?.pushViewController(collectionViewController, animated: true)
     }
     
-    
-    func getArt() {
-        NetworkManager.shared.getArt() { result in
-            DispatchQueue.main.async { [self] in
-                switch result {
-                case .success(let art):
-                    self.art = art
-                    print("poop")
-                case .failure(let error):
-                    self.presentAlert(error: error)
+    func getDetailsForAllObjects() -> Int {
+        // for loop for ObjectIDs
+        // for each ObjectID -> getArt()
+        
+        for objectId in 1...80 {
+            NetworkManager.shared.fetchDetailsForObject(for: objectId) { result in
+                DispatchQueue.main.async { [self] in
+                    switch result {
+                    case .success(let art):
+                        print(Art.self)
+                    case .failure(let error):
+                        self.presentAlert(error: error)
+                    }
                 }
             }
         }
+        return objectId
     }
     
     func presentAlert(error: ErrorMessage) {

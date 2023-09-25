@@ -7,19 +7,13 @@
 
 import Foundation
 
-struct ArtResponse: Codable {
-    var data: [Art]
-}
+// future proofing - use the request for ObjectIDs and then insert that into a function for the ObjectID detail request. Currently working off the assumption that the response are simple Ints that we can generate on our own and cycle through will not change for sake of time.
 
 struct Art: Codable {
-//    var objectID: Int
-//    var primaryImage: String?
-//    var constituents: [Constituent]
-    var departments: [Department]
-//    var title: String
-//    var objectEndDate: Int
-}
-
-struct Department: Codable {
-    var displayName: String
+    var objectID: Int
+    var primaryImage: String?
+    var artistDisplayName: String
+    var department: String
+    var title: String
+    var objectEndDate: Int
 }
