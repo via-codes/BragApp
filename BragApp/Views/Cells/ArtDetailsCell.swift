@@ -10,12 +10,20 @@ import UIKit
 class ArtDetailsCell: UICollectionViewCell {
     static let reuseID = "ArtDetailsCell"
     
-    let artImageView = ArtImageView(frame: .zero)
+    let artImageView = UIImageView()
     let artistNameLabel = UILabel()
+    var art: Art? {
+        didSet {
+            guard let art = art else { return }
+            artImageView.image = UIImage(named: "themetlogo")
+        }
+    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+        set(art: art!)
     }
     
     required init?(coder: NSCoder) {
@@ -24,6 +32,7 @@ class ArtDetailsCell: UICollectionViewCell {
     
     func set(art: Art) {
         artistNameLabel.text = art.title
+        artImageView.image = UIImage(named: "themetlogo")
     }
     
     private func configure() {

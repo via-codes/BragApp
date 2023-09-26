@@ -21,7 +21,7 @@ class NetworkManager {
     func fetchDetailsForAllObjects(completed: @escaping ([Art]) -> Void) {
         // for loop for ObjectIDs
         // for each ObjectID -> fetchDetailsForObject()
-        var group = DispatchGroup()
+        let group = DispatchGroup()
         var artArry = [Art]()
         
         for objectId in 1...80 {

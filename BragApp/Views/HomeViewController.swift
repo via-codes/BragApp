@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     @objc func buttonAction(_ sender:UIButton!) {
         print("Button tapped")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let collectionViewController = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as! CollectionViewController
+        let collectionViewController = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as! ArtCollectionViewController
         navigationController?.pushViewController(collectionViewController, animated: true)
     }
     

@@ -52,28 +52,15 @@
             </objects>
             <point key="canvasLocation" x="881.67938931297704" y="3.5211267605633805"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Art Collection View Controller-->
         <scene sceneID="p6O-1p-ue4">
             <objects>
-                <viewController storyboardIdentifier="CollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oQf-DV-25E" customClass="CollectionViewController" customModule="BragApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oQf-DV-25E" customClass="ArtCollectionViewController" customModule="BragApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="40z-zO-zvt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rv0-SW-ezA">
-                                <rect key="frame" x="175.66666666666666" y="433" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Riw-8C-vKB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="rv0-SW-ezA" firstAttribute="centerX" secondItem="Riw-8C-vKB" secondAttribute="centerX" id="8Xm-rD-0Ee"/>
-                            <constraint firstItem="Riw-8C-vKB" firstAttribute="bottom" secondItem="rv0-SW-ezA" secondAttribute="bottom" constant="364" id="K9t-I5-lxA"/>
-                            <constraint firstItem="rv0-SW-ezA" firstAttribute="top" secondItem="Riw-8C-vKB" secondAttribute="top" constant="374" id="u6y-50-mH3"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NaP-1p-yzu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
