@@ -23,7 +23,8 @@ class ArtDetailsCell: UICollectionViewCell {
     }
     
     func set(art: Art) {
-        artistNameLabel.text = art.title
+        
+        artistNameLabel.text = art.title ?? ""
     }
     
     private func configure() {

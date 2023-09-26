@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ArtImageView: UIImageView {
     
+    var art = Art.self
     let placeHolderImage = UIImage(named: "themetlogo")!
 
     override init(frame: CGRect) {
@@ -21,12 +23,13 @@ class ArtImageView: UIImageView {
     }
     
     private func configure() {
-        layer.cornerRadius = 8
+        layer.cornerRadius = 10
         clipsToBounds = true
         image = placeHolderImage
         translatesAutoresizingMaskIntoConstraints = false
+        placeHolderImage.sd_setImage(with: URL(string: art.primaryImage ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
     }
 
 }
 
-// imageView.sd_setImage(with: URL(string: art.primaryImage), placeholderImage: UIImage(named: "placeholder.png"))
+

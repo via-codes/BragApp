@@ -21,10 +21,10 @@ class NetworkManager {
     func fetchDetailsForAllObjects(completed: @escaping ([Art]) -> Void) {
         // for loop for ObjectIDs
         // for each ObjectID -> fetchDetailsForObject()
-        var group = DispatchGroup()
+        let group = DispatchGroup()
         var artArry = [Art]()
         
-        for objectId in 1...80 {
+        for objectId in 1...100 {
             group.enter()
             NetworkManager.shared.fetchDetailsForSingleObject(for: objectId) { result in
                 DispatchQueue.main.async {
@@ -41,7 +41,6 @@ class NetworkManager {
             }
         }
         group.notify(queue: DispatchQueue.main) {
-            //boopbeepbop
             // get func to ViewController
             completed(artArry)
         }
