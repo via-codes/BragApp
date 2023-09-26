@@ -17,31 +17,37 @@ class NetworkManager {
     let baseURL = "https://collectionapi.metmuseum.org/public/collection/v1/"
 
     private init() {}
-
-//    func getDetailsForAllObjects() -> Int {
-//        // for loop for ObjectIDs
-//        // for each ObjectID -> getArt()
-//        
-//        
-//        
-//        for objectId in 1...80 {
-//            fetchDetailsForObject(for: objectId) { result in
-//                DispatchQueue.main.async { [self] in
-//                    switch result {
-//                    case .success(let art):
-//                        print(Art)
-//                    case .failure(let error):
-//                        HomeViewController.presentAlert(error.rawValue)
-////                        self.presentAlert(error: error)
-//                    }
-//                }
-//            }
-//        }
-//        
-//    }
     
-    // change this to fetchDetailsForObject()
-    func fetchDetailsForObject(for objectID: Int, completed: @escaping (Result<[Art], ErrorMessage>) -> Void) {
+    func fetchDetailsForAllObjects(completed: @escaping ([Art]) -> Void) {
+        // for loop for ObjectIDs
+        // for each ObjectID -> fetchDetailsForObject()
+        var group = DispatchGroup()
+        var artArry = [Art]()
+        
+        for objectId in 1...80 {
+            group.enter()
+            NetworkManager.shared.fetchDetailsForSingleObject(for: objectId) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let art):
+                        artArry.append(art)
+                        // insert info into collectionViewCell
+                        // this is giving us only a single Art Object. I need to collect all of the responses into an array of them to display into a UI element
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+                group.leave()
+            }
+        }
+        group.notify(queue: DispatchQueue.main) {
+            //boopbeepbop
+            // get func to ViewController
+            completed(artArry)
+        }
+    }
+    
+    private func fetchDetailsForSingleObject(for objectID: Int, completed: @escaping (Result<Art, ErrorMessage>) -> Void) {
         // endpoint is the one specific to what I want - use the baseURL just to get to the API
         let endpoint = baseURL + "objects/\(objectID)"
         guard let url = URL(string: endpoint) else {
@@ -67,7 +73,7 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let artResponse = try decoder.decode([Art].self, from: data)
+                let artResponse = try decoder.decode(Art.self, from: data)
                 completed(.success(artResponse))
             } catch {
                 completed(.failure(.invalidData))

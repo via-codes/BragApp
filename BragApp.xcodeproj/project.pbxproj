@@ -18,6 +18,9 @@
 		FD3392C72ABD536A00A7ED1F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3392C62ABD536A00A7ED1F /* NetworkManager.swift */; };
 		FD3392C92ABD53DC00A7ED1F /* Art.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3392C82ABD53DC00A7ED1F /* Art.swift */; };
 		FD3392CD2ABD64F300A7ED1F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3392CC2ABD64F300A7ED1F /* Error.swift */; };
+		FDD653832AC25B43002D9B17 /* ArtDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD653822AC25B43002D9B17 /* ArtDetailsCell.swift */; };
+		FDD653852AC25C17002D9B17 /* ArtImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD653842AC25C17002D9B17 /* ArtImageView.swift */; };
+		FDD653882AC28B73002D9B17 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = FDD653872AC28B73002D9B17 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,8 @@
 		FD3392C62ABD536A00A7ED1F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FD3392C82ABD53DC00A7ED1F /* Art.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Art.swift; path = BragApp/Managers/Art.swift; sourceTree = SOURCE_ROOT; };
 		FD3392CC2ABD64F300A7ED1F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Managers/Error.swift; sourceTree = "<group>"; };
+		FDD653822AC25B43002D9B17 /* ArtDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailsCell.swift; sourceTree = "<group>"; };
+		FDD653842AC25C17002D9B17 /* ArtImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDD653882AC28B73002D9B17 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,14 +72,13 @@
 		FD3392A92ABC0A2A00A7ED1F /* BragApp */ = {
 			isa = PBXGroup;
 			children = (
-				FD3392CC2ABD64F300A7ED1F /* Error.swift */,
 				FD3392C52ABD534700A7ED1F /* Managers */,
 				FD3392C42ABD514F00A7ED1F /* Support */,
-				FD3392AE2ABC0A2A00A7ED1F /* HomeViewController.swift */,
+				FDD653802AC2578F002D9B17 /* Views */,
 				FD3392C22ABD510000A7ED1F /* Model */,
+				FD3392CC2ABD64F300A7ED1F /* Error.swift */,
 				FD3392BE2ABCC6BD00A7ED1F /* CustomUIButton.swift */,
 				FD3392B02ABC0A2A00A7ED1F /* Main.storyboard */,
-				FD3392C02ABD269500A7ED1F /* CollectionViewController.swift */,
 				FD3392B82ABC0A2B00A7ED1F /* Info.plist */,
 			);
 			path = BragApp;
@@ -106,6 +111,25 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		FDD653802AC2578F002D9B17 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FD3392AE2ABC0A2A00A7ED1F /* HomeViewController.swift */,
+				FD3392C02ABD269500A7ED1F /* CollectionViewController.swift */,
+				FDD653812AC25A6C002D9B17 /* Cells */,
+				FDD653842AC25C17002D9B17 /* ArtImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FDD653812AC25A6C002D9B17 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FDD653822AC25B43002D9B17 /* ArtDetailsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +146,9 @@
 			dependencies = (
 			);
 			name = BragApp;
+			packageProductDependencies = (
+				FDD653872AC28B73002D9B17 /* SDWebImage */,
+			);
 			productName = BragApp;
 			productReference = FD3392A72ABC0A2A00A7ED1F /* BragApp.app */;
 			productType = "com.apple.product-type.application";
@@ -150,6 +177,9 @@
 				Base,
 			);
 			mainGroup = FD33929E2ABC0A2900A7ED1F;
+			packageReferences = (
+				FDD653862AC28B73002D9B17 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = FD3392A82ABC0A2A00A7ED1F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -178,6 +208,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD3392C92ABD53DC00A7ED1F /* Art.swift in Sources */,
+				FDD653832AC25B43002D9B17 /* ArtDetailsCell.swift in Sources */,
+				FDD653852AC25C17002D9B17 /* ArtImageView.swift in Sources */,
 				FD3392C72ABD536A00A7ED1F /* NetworkManager.swift in Sources */,
 				FD3392BF2ABCC6BD00A7ED1F /* CustomUIButton.swift in Sources */,
 				FD3392AF2ABC0A2A00A7ED1F /* HomeViewController.swift in Sources */,
@@ -402,6 +434,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FDD653862AC28B73002D9B17 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FDD653872AC28B73002D9B17 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDD653862AC28B73002D9B17 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD33929F2ABC0A2900A7ED1F /* Project object */;
 }

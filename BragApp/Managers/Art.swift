@@ -11,6 +11,7 @@ import Foundation
 
 struct Art: Codable {
     var objectID: Int
+    var isPublicDomain: Bool
     var primaryImage: String?
     var artistDisplayName: String
     var department: String

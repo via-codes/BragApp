@@ -17,7 +17,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
+        
+        //move this to collectionVC
+//        NetworkManager.shared.fetchDetailsForAllObjects(completed: displayArt)
         configureBackgroundImageView()
         configureViewCollectionButton()
         viewCollectionButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
@@ -30,33 +32,21 @@ class HomeViewController: UIViewController {
         navigationController?.pushViewController(collectionViewController, animated: true)
     }
     
-    func getDetailsForAllObjects() -> Int {
-        // for loop for ObjectIDs
-        // for each ObjectID -> getArt()
-        
-        for objectId in 1...80 {
-            NetworkManager.shared.fetchDetailsForObject(for: objectId) { result in
-                DispatchQueue.main.async { [self] in
-                    switch result {
-                    case .success(let art):
-                        print(Art.self)
-                    case .failure(let error):
-                        self.presentAlert(error: error)
-                    }
-                }
-            }
-        }
-        return objectId
-    }
+    //moved to collectionVC
+//    func displayArt(for art: [Art]) {
+//        // do UI stuff
+//    }
+
     
-    func presentAlert(error: ErrorMessage) {
-        let dialogMessage = UIAlertController(title: "Something Went Wrong", message: error.rawValue, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default)
-        
-        dialogMessage.addAction(ok)
-        self.present(dialogMessage, animated: true, completion: nil)
-    }
-    
+// Bring this in a refactor down the road 
+//    func presentAlert(error: ErrorMessage) {
+//        let dialogMessage = UIAlertController(title: "Something Went Wrong", message: error.rawValue, preferredStyle: .alert)
+//        let ok = UIAlertAction(title: "OK", style: .default)
+//
+//        dialogMessage.addAction(ok)
+//        self.present(dialogMessage, animated: true, completion: nil)
+//    }
+//
     func configureBackgroundImageView() {
         view.addSubview(logoImageView)
         view.sendSubviewToBack(logoImageView)
